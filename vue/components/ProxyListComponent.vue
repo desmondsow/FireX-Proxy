@@ -36,6 +36,9 @@
       applySelectedCountries({ country }) {
         return this.countries.length === 0 || this.countries.indexOf(country) > -1;
       },
+      applySelectedPingTimeMss({ pingTimeMs }) {
+        return this.pingTimeMss.length === 0 || this.pingTimeMss.some(el => el > pingTimeMs);
+      },
       applySelectedProtocols({ protocol }) {
         return this.protocols.indexOf(protocol) > -1;
       },
@@ -57,6 +60,7 @@
         return this.proxies
           .filter(this.applyFavorite)
           .filter(this.applySelectedCountries)
+          .filter(this.applySelectedPingTimeMss)
           .filter(this.applySelectedProtocols);
       },
       ...mapState('proxies', {
@@ -65,8 +69,9 @@
       }),
       ...mapState('filters', {
         favorites: 'favorites',
+        countries: 'countryFilter',
+        pingTimeMss: 'pingTimeMsFilter',
         protocols: 'protocolFilter',
-        countries: 'countryFilter'
       })
     },
     mounted() {

@@ -26,6 +26,9 @@
   "conflict_resolve": {
     "message": "解決衝突"
   },
+  "pingTimeMsLessThan": {
+    "message": "延遲 (<毫秒)"
+  },
   "protocol": {
     "message": "協定"
   },

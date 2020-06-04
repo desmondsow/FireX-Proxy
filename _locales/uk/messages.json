@@ -26,6 +26,9 @@
   "conflict_resolve": {
     "message": "Вирiшити конфлікти"
   },
+  "pingTimeMsLessThan": {
+    "message": "пінг (<мс)"
+  },
   "protocol": {
     "message": "Протокол"
   },

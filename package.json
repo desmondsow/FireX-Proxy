@@ -9,7 +9,8 @@
     "test": "./node_modules/.bin/mocha --require babel-core/register",
     "build-firefox": "./node_modules/.bin/webpack --config webpack.config.firefox.babel.js --mode production",
     "build-chrome": "./node_modules/.bin/webpack --config webpack.config.chrome.babel.js --mode production",
-    "build-dev": "./node_modules/.bin/webpack --config webpack.development.config.babel.js"
+    "build-dev": "./node_modules/.bin/webpack --config webpack.development.config.babel.js",
+    "watch-firefox": "web-ext run --source-dir ./build --verbose"
   },
   "devDependencies": {
     "@fortawesome/fontawesome-free": "^5.8.1",
@@ -42,6 +43,7 @@
     "vue-template-compiler": "^2.6.10",
     "vuetify": "^1.5.22",
     "vuex": "^3.1.0",
+    "web-ext": "^4.2.0",
     "webextension-polyfill": "^0.3.1",
     "webpack": "^4.19.0",
     "webpack-cli": "^3.1.0",

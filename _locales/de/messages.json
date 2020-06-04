@@ -26,6 +26,9 @@
   "conflict_resolve": {
     "message": "Konflikte lösen"
   },
+  "pingTimeMsLessThan": {
+    "message": "Ping (<ms)"
+  },
   "protocol": {
     "message": "Protokol"
   },
