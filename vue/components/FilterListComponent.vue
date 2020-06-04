@@ -33,6 +33,17 @@
         >
         </v-combobox>
         <v-combobox
+                v-model="pingTimeMsFilter"
+                :items="pingTimeMss"
+                :label="this.$options.filters.translate('pingTimeMsLessThan')"
+                chips
+                clearable
+                deletable-chips
+                solo
+                multiple
+        >
+        </v-combobox>
+        <v-combobox
           v-model="protocolFilter"
           :items="protocols"
           :label="this.$options.filters.translate('protocol')"
@@ -80,6 +91,15 @@
           this.updateFilters();
         }
       },
+      pingTimeMsFilter: {
+        get() {
+          return this.$store.state.filters.pingTimeMsFilter;
+        },
+        set(newValue) {
+          this.$store.commit('filters/setPingTimeMsFilter', newValue);
+          this.updateFilters();
+        }
+      },
       countryFilter: {
         get() {
           return this.$store.state.filters.countryFilter;
@@ -91,6 +111,7 @@
       },
       ...mapState('filters', {
         countries: 'countries',
+        pingTimeMss: 'pingTimeMss',
         protocols: 'protocols'
       })
     },

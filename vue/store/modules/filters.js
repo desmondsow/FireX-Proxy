@@ -2,8 +2,10 @@ import * as browser from 'webextension-polyfill'
 
 const state = {
   countries: [],
+  pingTimeMss: [],
   protocols: [],
   countryFilter: [],
+  pingTimeMsFilter: [],
   protocolFilter: [],
   favorites: true
 };
@@ -17,6 +19,7 @@ const actions = {
     const update = {
       protocolFilter: state.protocolFilter.concat(newProtocols).filter(protocol => allProtocols.indexOf(protocol) >= 0),
       countries: [...uniqueCountries].sort(),
+      pingTimeMss: [300, 1000, 3000],
       protocols: allProtocols
     };
 
@@ -36,12 +39,14 @@ const actions = {
 const mutations = {
   resetFilters(state) {
     state.countryFilter = [];
+    state.pingTimeMsFilter = [];
     state.protocolFilter = state.protocols;
     state.favorites = true;
   },
-  updateChoices(state, { protocolFilter, countries, protocols }) {
-    state.protocols = protocols;
+  updateChoices(state, { protocolFilter, countries, pingTimeMss, protocols }) {
     state.countries = countries;
+    state.pingTimeMss = pingTimeMss;
+    state.protocols = protocols;
     state.protocolFilter = protocolFilter;
   },
   update(state, inbound) {
@@ -52,6 +57,9 @@ const mutations = {
   },
   setCountryFilter(state, countryFilter) {
     state.countryFilter = countryFilter;
+  },
+  setPingTimeMsFilter(state, pingTimeMsFilter) {
+    state.pingTimeMsFilter = pingTimeMsFilter;
   },
   setProtocolFilter(state, protocolFilter) {
     state.protocolFilter = protocolFilter;
