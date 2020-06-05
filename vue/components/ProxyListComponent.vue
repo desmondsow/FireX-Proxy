@@ -40,7 +40,7 @@
         return this.pingTimeMss.length === 0 || this.pingTimeMss.some(el => el > pingTimeMs);
       },
       applySelectedProtocols({ protocol }) {
-        return this.protocols.indexOf(protocol) > -1;
+        return this.protocols.length === 0 || this.protocols.indexOf(protocol) > -1;
       },
       applyFavorite({ favoriteState }) {
         return this.favorites || favoriteState === this.favorites;
