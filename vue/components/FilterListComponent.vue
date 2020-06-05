@@ -71,7 +71,7 @@
     },
     computed: {
       countFilters() {
-        return Number(this.countryFilter.length > 0) + Number(this.protocolFilter.length !== this.protocols.length) + Number(this.favorites === false);
+        return Number(this.countryFilter.length > 0) + Number(this.pingTimeMsFilter.length > 0) + Number(this.protocolFilter.length > 0) + Number(this.favorites === false);
       },
       favorites: {
         get() {
