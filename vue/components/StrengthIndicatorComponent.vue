@@ -37,10 +37,10 @@
     display: inline-block;
     font-size: 0;
     .bar {
-      width: 2px;
+      width: 4px;
       display: inline-block;
-      background-color: black;
-      height: 3px;
+      background-color: blue;
+      height: 5px;
       margin: 0 .5px -2px .5px;
 
       &.second-bar {
