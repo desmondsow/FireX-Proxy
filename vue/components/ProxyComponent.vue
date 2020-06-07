@@ -22,6 +22,9 @@
       <v-flex xs1>
         <strength-indicator-component v-bind="{ strength: proxy.pingTimeMs, strengths: [300, 1000, 3000] }"></strength-indicator-component>
       </v-flex>
+      <v-flex xs3>
+        {{ proxy.pingTimeMs + ' ms'}}
+      </v-flex>
       <v-flex xs2>
         {{ proxy.protocol }}
       </v-flex>
