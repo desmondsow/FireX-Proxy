@@ -10,6 +10,7 @@ const defaultForm = {
 
 const state = {
   items: [],
+  fastConnect: false,
   loaded: false,
   createForm: defaultForm
 };
@@ -35,13 +36,23 @@ const actions = {
 
     return proxies;
   },
+  async toggleFastConnect({ commit, state, dispatch }) {
+    if (state.fastConnect) {
+      const proxy = state.items.concat().sort((a, b) => a.pingTimeMs - b.pingTimeMs)[0];
+      dispatch('connect', proxy);
+    } else {
+      dispatch('disconnect');
+    }
+  },
   async connect({ commit, state }, proxy) {
     commit('disableAll');
     commit('activate', proxy);
+    commit('setFastConnectState', true);
     browser.runtime.sendMessage({ name: 'connect', message: proxy });
   },
   disconnect({ commit }) {
     commit('disableAll');
+    commit('setFastConnectState', false);
     browser.runtime.sendMessage({ name: 'disconnect' });
   },
   toggleFavorite({ commit }, proxy) {
@@ -93,7 +104,10 @@ const mutations = {
   toggleFavorite(state, proxy) {
     const finder = ({ ipAddress, port }) => proxy.ipAddress === ipAddress && proxy.port === port;
     state.items.splice(state.items.findIndex(finder), 1, { ...proxy, favoriteState: proxy.favoriteState === false });
-  }
+  },
+  setFastConnectState(state, fastConnectState) {
+    state.fastConnect = fastConnectState;
+  },
 };
 
 export default {

@@ -3,6 +3,7 @@
     <v-toolbar color="primary" dark>
       <v-toolbar-title>FireX Proxy</v-toolbar-title>
       <v-spacer></v-spacer>
+      <v-switch v-model="fastConnect" v-show="active === 'home'" color="red" :title="'connect_fastest' | translate" hide-details></v-switch>
       <add-proxy-component v-show="active === 'home'"></add-proxy-component>
       <filter-list-component v-show="active === 'home'"></filter-list-component>
       <v-btn icon @click="update" v-show="active === 'home'">
@@ -91,6 +92,17 @@
         this.dialog = true;
       }
     },
+    computed: {
+      fastConnect: {
+        get() {
+          return this.$store.state.proxies.fastConnect;
+        },
+        set(newValue) {
+          this.$store.commit('proxies/setFastConnectState', newValue);
+          this.toggleFastConnect();
+        }
+      }
+    },
     methods: {
       update() {
         this.$store.dispatch('proxies/poll', true);
@@ -108,6 +120,9 @@
       },
       updateUser() {
         this.$store.dispatch('user/update');
+      },
+      toggleFastConnect() {
+        this.$store.dispatch('proxies/toggleFastConnect');
       }
     },
     mounted() {
