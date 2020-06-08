@@ -27,7 +27,17 @@ const actions = {
 
     const message = { name: 'get-proxies', message: { force: isForce } };
     const proxies = await browser.runtime.sendMessage(message);
-    const newProxies = proxies.map(proxy => ({ ...proxy, country: proxy.country || 'Unknown' }));
+    let newProxies = proxies.map(proxy => ({ ...proxy, country: proxy.country || 'Unknown' }));
+    newProxies.sort((a, b) => a.country.localeCompare(b.country));
+
+    const finder = ({ activeState }) => activeState === true;
+    const activeProxy = newProxies[newProxies.findIndex(finder)];
+
+    if (activeProxy) {
+      commit('setFastConnectState', true);
+      newProxies.splice(newProxies.findIndex(finder), 1);
+      newProxies.unshift(activeProxy);
+    }
 
     this.dispatch('filters/updateChoices', newProxies);
 
@@ -96,10 +106,13 @@ const mutations = {
   },
   disableAll(state) {
     state.items = state.items.map(s => ({ ...s, activeState: false }));
+    state.items.sort((a, b) => a.country.localeCompare(b.country));
   },
   activate(state, proxy) {
     const finder = ({ ipAddress, port }) => proxy.ipAddress === ipAddress && proxy.port === port;
-    state.items.splice(state.items.findIndex(finder), 1, { ...proxy, activeState: true });
+    // state.items.splice(state.items.findIndex(finder), 1, { ...proxy, activeState: true });
+    state.items.splice(state.items.findIndex(finder), 1);
+    state.items.unshift({ ...proxy, activeState: true });
   },
   toggleFavorite(state, proxy) {
     const finder = ({ ipAddress, port }) => proxy.ipAddress === ipAddress && proxy.port === port;
