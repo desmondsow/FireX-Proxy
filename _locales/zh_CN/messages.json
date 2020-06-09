@@ -1,4 +1,16 @@
 {
+  "connect_fastest": {
+    "message": "连接到最快的代理服务器"
+  },
+  "add_proxy": {
+    "message": "添加代理"
+  },
+  "filter": {
+    "message": "过滤代理"
+  },
+  "refresh": {
+    "message": "刷新代理"
+  },
   "use_blacklist": {
     "message": "使用 黑名单"
   },

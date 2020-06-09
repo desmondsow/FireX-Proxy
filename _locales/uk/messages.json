@@ -1,4 +1,16 @@
 {
+  "connect_fastest": {
+    "message": "Підключіться до найшвидшого сервера"
+  },
+  "add_proxy": {
+    "message": "Додати проксі"
+  },
+  "filter": {
+    "message": "Фільтр проксі"
+  },
+  "refresh": {
+    "message": "Оновити проксі"
+  },
   "use_blacklist": {
     "message": "Активувати"
   },
