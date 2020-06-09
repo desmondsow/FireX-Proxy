@@ -4,9 +4,9 @@
       <v-toolbar-title>FireX Proxy</v-toolbar-title>
       <v-spacer></v-spacer>
       <v-switch v-model="fastConnect" v-show="active === 'home'" color="red" :title="'connect_fastest' | translate" hide-details></v-switch>
-      <add-proxy-component v-show="active === 'home'"></add-proxy-component>
-      <filter-list-component v-show="active === 'home'"></filter-list-component>
-      <v-btn icon @click="update" v-show="active === 'home'">
+      <add-proxy-component v-show="active === 'home'" :title="'add_proxy' | translate"></add-proxy-component>
+      <filter-list-component v-show="active === 'home'" :title="'filter' | translate"></filter-list-component>
+      <v-btn icon @click="update" v-show="active === 'home'" :title="'refresh' | translate">
         <v-icon>refresh</v-icon>
       </v-btn>
       <v-tabs

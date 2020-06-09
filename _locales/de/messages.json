@@ -1,4 +1,16 @@
 {
+  "connect_fastest": {
+    "message": "Stellen Sie eine Verbindung zum schnellsten Server her"
+  },
+  "add_proxy": {
+    "message": "Proxy hinzufügen"
+  },
+  "filter": {
+    "message": "Proxys filtern"
+  },
+  "refresh": {
+    "message": "Proxys aktualisieren"
+  },
   "use_blacklist": {
     "message": "Schwarze Liste nutzen"
   },

@@ -1,4 +1,16 @@
 {
+  "connect_fastest": {
+    "message": "Connect to the fastest server"
+  },
+  "add_proxy": {
+    "message": "Add proxy"
+  },
+  "filter": {
+    "message": "Filter proxies"
+  },
+  "refresh": {
+    "message": "Refresh proxies"
+  },
   "use_blacklist": {
     "message": "Use blacklist"
   },
